@@ -4,13 +4,13 @@ const int nickelBtnOn = 2;
 const int nickelBtnOff = 3;
 const int nickelLEDBusy = 4;
 const int nickelLEDDone = 5;
-const int nickelTimerDuration = 1080000; // Duration in milliseconds - 18 minutes
+const unsigned long nickelTimerDuration = 1080000; // Duration in milliseconds - 18 minutes
 
 const int chromeBtnOn = 6;
 const int chromeBtnOff = 7;
 const int chromeLEDBusy = 8;
 const int chromeLEDDone = 9;
-const int chromeTimerDuration = 150000; // Duration in milliseconds - 2.5 minutes
+const unsigned long chromeTimerDuration = 150000; // Duration in milliseconds - 2.5 minutes
 
 boolean nickelTimerState = false;
 unsigned long nickelTimerEpoch = 0;
@@ -28,7 +28,7 @@ void setup(){
   pinMode(nickelBtnOff, INPUT);
   pinMode(nickelLEDBusy, OUTPUT);
   pinMode(nickelLEDDone, OUTPUT);
-  
+
   pinMode(chromeBtnOn, INPUT);
   pinMode(chromeBtnOff, INPUT);
   pinMode(chromeLEDBusy, OUTPUT);
@@ -90,7 +90,3 @@ void  loop() {
   //  Serial.print("Current Time: ");
   //  Serial.println(millis());
 }
-
-
-
-
