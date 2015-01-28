@@ -1,13 +1,13 @@
 const int timerBuzzer = 19;
+const unsigned long timerBlinkDuration = 500; // Duration in milliseconds - 0.5 second
 
 // Alkaline
 const int alkalineBtnOn = 2;
 const int alkalineBtnOff = 3;
 const int alkalineLEDBusy = 4;
 const int alkalineLEDDone = 5;
-const unsigned long alkalineTimerDuration = 15000; // Duration in milliseconds - 20 seconds
-const unsigned long alkalineTimerWarning = 10000; // Duration in milliseconds - 15 seconds
-const unsigned long alkalineBlinkDuration = 500; // Duration in milliseconds - 0.5 second
+const unsigned long alkalineTimerDuration = 180000; // Duration in milliseconds - 3 minutes
+const unsigned long alkalineTimerWarning = 150000; // Will trigger 30 seconds before timer end
 unsigned long alkalineTimerEpoch = 0;
 unsigned long alkalineTimerWarningLast = 0;
 boolean alkalineTimerState = false;
@@ -21,9 +21,8 @@ const int nickel1BtnOn = 6;
 const int nickel1BtnOff = 7;
 const int nickel1LEDBusy = 8;
 const int nickel1LEDDone = 9;
-const unsigned long nickel1TimerDuration = 15000; // Duration in milliseconds - 20 seconds
-const unsigned long nickel1TimerWarning = 10000; // Duration in milliseconds - 15 seconds
-const unsigned long nickel1BlinkDuration = 500; // Duration in milliseconds - 0.5 second
+const unsigned long nickel1TimerDuration = 900000; // Duration in milliseconds - 15 minutes
+const unsigned long nickel1TimerWarning = 870000; // Will trigger 30 seconds before timer end
 unsigned long nickel1TimerEpoch = 0;
 unsigned long nickel1TimerWarningLast = 0;
 boolean nickel1TimerState = false;
@@ -37,9 +36,8 @@ const int nickel2BtnOn = 10;
 const int nickel2BtnOff = 11;
 const int nickel2LEDBusy = 12;
 const int nickel2LEDDone = 13;
-const unsigned long nickel2TimerDuration = 15000; // Duration in milliseconds - 20 seconds
-const unsigned long nickel2TimerWarning = 10000; // Duration in milliseconds - 15 seconds
-const unsigned long nickel2BlinkDuration = 500; // Duration in milliseconds - 0.5 second
+const unsigned long nickel2TimerDuration = 900000; // Duration in milliseconds - 15 minutes
+const unsigned long nickel2TimerWarning = 870000; // Will trigger 30 seconds before timer end
 unsigned long nickel2TimerEpoch = 0;
 unsigned long nickel2TimerWarningLast = 0;
 boolean nickel2TimerState = false;
@@ -53,9 +51,8 @@ const int chromeBtnOn = 14;
 const int chromeBtnOff = 15;
 const int chromeLEDBusy = 16;
 const int chromeLEDDone = 17;
-const unsigned long chromeTimerDuration = 15000; // Duration in milliseconds - 20 seconds
-const unsigned long chromeTimerWarning = 10000; // Duration in milliseconds - 15 seconds
-const unsigned long chromeBlinkDuration = 500; // Duration in milliseconds - 0.5 second
+const unsigned long chromeTimerDuration = 120000; // Duration in milliseconds - 2 minutes
+const unsigned long chromeTimerWarning = 90000; // Will trigger 30 seconds before timer end
 unsigned long chromeTimerEpoch = 0;
 unsigned long chromeTimerWarningLast = 0;
 boolean chromeTimerState = false;
@@ -125,7 +122,7 @@ void  loop() {
       }
       else {
         if (alkalineWarningState == 1) {
-          if (millis() >= alkalineTimerWarningLast + alkalineBlinkDuration) {
+          if (millis() >= alkalineTimerWarningLast + timerBlinkDuration) {
             digitalWrite(alkalineLEDDone, alkalineWarningLEDState);
             alkalineWarningLEDState = !alkalineWarningLEDState;
             alkalineTimerWarningLast = millis();
@@ -171,7 +168,7 @@ void  loop() {
       }
       else {
         if (nickel1WarningState == 1) {
-          if (millis() >= nickel1TimerWarningLast + nickel1BlinkDuration) {
+          if (millis() >= nickel1TimerWarningLast + timerBlinkDuration) {
             digitalWrite(nickel1LEDDone, nickel1WarningLEDState);
             nickel1WarningLEDState = !nickel1WarningLEDState;
             nickel1TimerWarningLast = millis();
@@ -217,7 +214,7 @@ void  loop() {
       }
       else {
         if (nickel2WarningState == 1) {
-          if (millis() >= nickel2TimerWarningLast + nickel2BlinkDuration) {
+          if (millis() >= nickel2TimerWarningLast + timerBlinkDuration) {
             digitalWrite(nickel2LEDDone, nickel2WarningLEDState);
             nickel2WarningLEDState = !nickel2WarningLEDState;
             nickel2TimerWarningLast = millis();
@@ -263,7 +260,7 @@ void  loop() {
       }
       else {
         if (chromeWarningState == 1) {
-          if (millis() >= chromeTimerWarningLast + chromeBlinkDuration) {
+          if (millis() >= chromeTimerWarningLast + timerBlinkDuration) {
             digitalWrite(chromeLEDDone, chromeWarningLEDState);
             chromeWarningLEDState = !chromeWarningLEDState;
             chromeTimerWarningLast = millis();
